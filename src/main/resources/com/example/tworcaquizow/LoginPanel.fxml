@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.tworcaquizow.HelloController">
+  <padding>
+    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+  </padding>
+
+  <!-- Label for error or success messages -->
+  <Label fx:id="statusLabel" text="" textFill="red">
+    <font>
+      <Font name="Arial" size="14" />
+    </font>
+  </Label>
+
+  <!-- GridPane for the login form -->
+  <GridPane hgap="10" vgap="10" alignment="CENTER">
+    <Label text="Login:" GridPane.rowIndex="0" GridPane.columnIndex="0">
+      <font>
+        <Font name="Arial" size="12" />
+      </font>
+    </Label>
+    <TextField fx:id="loginField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200" prefHeight="30">
+      <font>
+        <Font name="Arial" size="12" />
+      </font>
+    </TextField>
+
+    <Label text="Hasło:" GridPane.rowIndex="1" GridPane.columnIndex="0">
+      <font>
+        <Font name="Arial" size="12" />
+      </font>
+    </Label>
+    <PasswordField fx:id="passwordField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200" prefHeight="30">
+      <font>
+        <Font name="Arial" size="12" />
+      </font>
+    </PasswordField>
+  </GridPane>
+
+  <!-- Buttons section -->
+  <VBox spacing="10" alignment="CENTER">
+    <Button  fx:id="loginButton" text="Zaloguj się" onAction="#loginButton" minWidth="150" minHeight="40">
+      <font>
+        <Font name="Arial" size="14" />
+      </font>
+    </Button>
+    <Button  fx:id="registerButton" text="Zarejestruj się" onAction="#registerButton" minWidth="150" minHeight="40">
+      <font>
+        <Font name="Arial" size="14" />
+      </font>
+    </Button>
+  </VBox>
+</VBox>
