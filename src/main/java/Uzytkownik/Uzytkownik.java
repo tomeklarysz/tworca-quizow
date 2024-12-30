@@ -10,12 +10,12 @@ public class Uzytkownik {
         this.haslo = haslo;
     }
 
-    public void uzytkownikZalogowany() {
+    public void Zaloguj() {
         stanZalogowania = true;
     }
 
-    public void uzytkownikNieZalogowany() {
-        stanZalogowania = true;
+    public void Wyloguj() {
+        stanZalogowania = false;
     }
 
     public boolean getStanZalogowania() {
