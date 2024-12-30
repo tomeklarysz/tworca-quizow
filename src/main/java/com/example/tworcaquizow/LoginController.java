@@ -35,14 +35,14 @@ public class LoginController {
             if (LoginDataBase.check_account(conn, login, password)) {
                 uzytkownik = new Uzytkownik(login, password);
                 statusLabel.setText("Zalogowano");
-                uzytkownik.uzytkownikZalogowany();
+                uzytkownik.Zaloguj();
                 statusLabel.setTextFill(Color.GREEN);
                 loginField.clear();
                 passwordField.clear();
             }
             else {
                 statusLabel.setText("Nie ma takiego konta");
-                uzytkownik.uzytkownikNieZalogowany();
+                uzytkownik.Wyloguj();
                 statusLabel.setTextFill(Color.RED);
                 loginField.clear();
                 passwordField.clear();
