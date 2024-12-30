@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.16080402010050251" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="598.0">
+            <children>
+                <Button layoutX="725.0" layoutY="18.0" mnemonicParsing="false" text="Wyloguj" />
+                <Button layoutX="638.0" layoutY="18.0" mnemonicParsing="false" text="Dodaj quiz" />
+                <Label layoutX="14.0" layoutY="35.0" prefHeight="24.0" prefWidth="82.0" text="username" />
+            <TextField editable="false" layoutX="725.0" layoutY="59.0" prefHeight="26.0" prefWidth="60.0" />
+            <Label alignment="CENTER" layoutX="623.0" layoutY="60.0" prefHeight="24.0" prefWidth="102.0" text="liczba punktów:" />
+            </children></AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="598.0">
+            <children>
+                <SplitPane dividerPositions="0.5005015045135405" orientation="HORIZONTAL" prefHeight="499.0" prefWidth="799.0">
+                    <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="400.0">
+                            <children>
+                                <Hyperlink layoutX="14.0" layoutY="14.0" style="-fx-font-weight: 700;" text="Quiz 1" />
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                            <children>
+                                <Label alignment="CENTER" layoutX="140.0" layoutY="14.0" prefHeight="31.0" prefWidth="116.0" text="Ranking" />
+                                <ListView layoutX="58.0" layoutY="49.0" prefHeight="399.0" prefWidth="279.0" />
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </children></AnchorPane>
+    </items>
+</SplitPane>
