@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Connection;
 
 public class HelloController {
-    String DATABASE_URL = "jdbc:sqlite:/home/karol/IdeaProjects/tworca-quizow/src/main/databases/db_login.db";
+    String DATABASE_URL = "jdbc:sqlite:C:\\Users\\araba\\IdeaProjects\\tworca-quizow\\src\\main\\databases\\db_login.db";
 
     @FXML
     private Label statusLabel;
