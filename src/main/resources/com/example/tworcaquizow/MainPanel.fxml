@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.16080402010050251" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.16080402010050251" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.MainPanelController">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="598.0">
             <children>
@@ -15,13 +15,13 @@
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="598.0">
             <children>
-                <SplitPane dividerPositions="0.5005015045135405" orientation="HORIZONTAL" prefHeight="499.0" prefWidth="799.0">
+                <SplitPane dividerPositions="0.5" orientation="HORIZONTAL" prefHeight="499.0" prefWidth="799.0">
                     <items>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="400.0">
+                        <VBox fx:id="quizContainer" prefHeight="200.0" prefWidth="100.0">
                             <children>
-                                <Hyperlink layoutX="14.0" layoutY="14.0" style="-fx-font-weight: 700;" text="Quiz 1" />
+                                <Hyperlink style="-fx-font-weight: 700;" text="Quiz 1" />
                             </children>
-                        </AnchorPane>
+                        </VBox>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                             <children>
                                 <Label alignment="CENTER" layoutX="140.0" layoutY="14.0" prefHeight="31.0" prefWidth="116.0" text="Ranking" />
