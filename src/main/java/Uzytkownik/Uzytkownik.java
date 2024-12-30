@@ -4,6 +4,7 @@ public class Uzytkownik {
     private boolean stanZalogowania;
     private String login;
     private String haslo;
+    private Integer liczbaPunktow = 0;
 
     public Uzytkownik(String login, String haslo){
         this.login = login;
@@ -28,5 +29,13 @@ public class Uzytkownik {
 
     public String getHaslo() {
         return haslo;
+    }
+
+    public void ZwiekszLiczbePunktow() {
+        liczbaPunktow++;
+    }
+
+    public Integer getLiczbaPunktow() {
+        return liczbaPunktow;
     }
 }
