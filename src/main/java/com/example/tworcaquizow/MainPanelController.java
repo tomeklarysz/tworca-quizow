@@ -30,10 +30,12 @@ public class MainPanelController {
 
             while (rs.next()) {
                 String name = rs.getString("name");
+                String description = rs.getString("description");
                 int id = rs.getInt("id");
                 Hyperlink link = new Hyperlink(name);
                 link.setOnAction(e -> {
                     Quiz quiz = new Quiz(name);
+                    quiz.setDescription(description);
                     openQuiz(quiz);
                 });
                 quizContainer.getChildren().add(link);
@@ -62,6 +64,7 @@ public class MainPanelController {
 
             StartQuizController controller = fxmlLoader.getController();
             controller.setLabel(quiz.getName());
+            controller.setDescription(quiz.getDescription());
 
             // Zamknij bieżące okno
             Stage currentStage = (Stage) quizContainer.getScene().getWindow(); // Pobierz bieżący Stage
