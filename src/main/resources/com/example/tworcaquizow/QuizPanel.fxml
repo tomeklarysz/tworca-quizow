@@ -3,14 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.QuizController">
     <!-- Top Bar: Login, Wyjdź, Wyloguj -->
     <top>
         <HBox alignment="CENTER_RIGHT" spacing="10">
@@ -25,24 +25,43 @@
 
     <!-- Central Section: Question and Answers -->
     <center>
-        <GridPane alignment="CENTER" hgap="30" vgap="30">
+        <GridPane alignment="TOP_CENTER" hgap="30.0" prefWidth="800.0" vgap="30.0">
             <!-- Question Text -->
-            <Label prefHeight="35.0" prefWidth="332.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-alignment: CENTER;" text="PYTANIE" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+            <Label fx:id="pytanieText" prefHeight="154.0" prefWidth="631.0" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-alignment: CENTER; -fx-wrap-text: true;" text="Państwo, w którym stoi wieża Eiffla" GridPane.columnSpan="2" />
 
             <!-- Answer Buttons -->
-            <Button style="-fx-font-size: 18px; -fx-pref-width: 150px; -fx-pref-height: 50px;" text="ODP1" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Button style="-fx-font-size: 18px; -fx-pref-width: 150px; -fx-pref-height: 50px;" text="ODP2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button style="-fx-font-size: 18px; -fx-pref-width: 150px; -fx-pref-height: 50px;" text="ODP3" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <Button style="-fx-font-size: 18px; -fx-pref-width: 150px; -fx-pref-height: 50px;" text="ODP4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="buttonA" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px;" text="ODP1" GridPane.rowIndex="1" />
+            <Button fx:id="buttonB" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px;" text="ODP2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="buttonC" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px;" text="ODP3" GridPane.rowIndex="2" />
+            <Button fx:id="buttonD" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px;" text="ODP4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
+            <ColumnConstraints maxWidth="300.0" minWidth="300.0" prefWidth="300.0" />
+            <ColumnConstraints maxWidth="301.0" minWidth="301.0" prefWidth="301.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints />
+            <RowConstraints fillHeight="false" />
             <RowConstraints />
             <RowConstraints />
          </rowConstraints>
         </GridPane>
     </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="179.0" prefWidth="800.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="finishQuizButton" layoutX="242.0" layoutY="40.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="222.0" text="Zakończ quiz">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="nextQuestionButton" layoutX="411.0" layoutY="78.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="222.0" text="Następne pytanie" disable="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
 </BorderPane>
