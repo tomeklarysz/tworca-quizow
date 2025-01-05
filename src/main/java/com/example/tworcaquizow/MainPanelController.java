@@ -36,6 +36,7 @@ public class MainPanelController {
                 link.setOnAction(e -> {
                     Quiz quiz = new Quiz(name);
                     quiz.setDescription(description);
+                    quiz.setId(id);
                     openQuiz(quiz);
                 });
                 quizContainer.getChildren().add(link);
@@ -58,11 +59,12 @@ public class MainPanelController {
 
             // Utwórz nową scenę i okno
             Stage newStage = new Stage();
-            newStage.setTitle("Quiz Panel");
+            newStage.setTitle("Start Quiz");
             newStage.setScene(new Scene(root));
             newStage.show();
 
             StartQuizController controller = fxmlLoader.getController();
+            controller.setQuiz(quiz);
             controller.setLabel(quiz.getName());
             controller.setDescription(quiz.getDescription());
 

@@ -38,19 +38,19 @@
                   </Label>
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="141.0" layoutY="289.0" prefHeight="62.0" prefWidth="532.0" text="Czy chcesz rozpocząć quiz">
+            <Label alignment="CENTER" layoutX="141.0" layoutY="289.0" prefHeight="62.0" prefWidth="532.0" text="Czy chcesz rozpocząć quiz?">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
             <HBox alignment="CENTER" layoutX="250.0" layoutY="369.0" prefHeight="74.0" prefWidth="300.0" spacing="15.0">
                <children>
-                  <Button layoutX="105.0" layoutY="48.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="141.0" text="Anuluj">
+                  <Button fx:id="anulujQuiz" onAction="#quitQuiz" layoutX="105.0" layoutY="48.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="141.0" text="Anuluj">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="153.0" layoutY="41.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="141.0" text="Tak">
+                  <Button fx:id="startQuiz" onAction="#startQuiz" layoutX="153.0" layoutY="41.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="141.0" text="Tak">
                      <font>
                         <Font size="18.0" />
                      </font>
