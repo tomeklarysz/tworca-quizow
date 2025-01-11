@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class MainPanelController {
+public class MainController {
     @FXML
     VBox quizContainer;
 
