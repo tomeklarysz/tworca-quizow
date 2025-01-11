@@ -1,6 +1,5 @@
 package com.example.tworcaquizow;
 
-import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import Uzytkownik.Uzytkownik; // Jeśli Uzytkownik to Twój własny pakiet
+import Uzytkownik.Uzytkownik;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -83,25 +82,20 @@ public class LoginController {
     public void ZalogowanieUzytkownika(Uzytkownik uzytkownik) {
         if (uzytkownik.getStanZalogowania()) {
             try {
-                // Załaduj nowe okno
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainPanel.fxml"));
                 Parent root = fxmlLoader.load();
 
-                // Pobierz kontroler drugiego okna
                 MainController mainController = fxmlLoader.getController();
 
-                // Ustaw login w nowym oknie
                 mainController.UstawLogin(uzytkownik.getLogin());
                 mainController.DodajUzytkownika(uzytkownik);
                 mainController.WyswietlLiczbePunktow();
 
-                // Utwórz nową scenę i okno
                 Stage newStage = new Stage();
                 newStage.setTitle("Main Panel");
                 newStage.setScene(new Scene(root,800,600));
                 newStage.show();
 
-                // Zamknij bieżące okno
                 Stage currentStage = (Stage) loginField.getScene().getWindow();
                 currentStage.close();
             } catch (IOException e) {

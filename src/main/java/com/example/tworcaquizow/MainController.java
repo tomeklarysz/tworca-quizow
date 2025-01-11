@@ -10,13 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import javax.swing.plaf.basic.BasicLabelUI;
 import java.io.IOException;
-
-import java.sql.SQLException;
-
-import java.sql.Connection;
 
 public class MainController {
     @FXML
@@ -53,7 +47,7 @@ public class MainController {
     public void DodajQuizButton(ActionEvent actionEvent) {
         try {
             // Załaduj nowe okno
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DodanieQuizPanel.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DodanieNazwyQuizuPanel.fxml"));
             Parent root = fxmlLoader.load();
 
             // Utwórz nową scenę i okno
@@ -61,6 +55,10 @@ public class MainController {
             newStage.setTitle("Main Panel");
             newStage.setScene(new Scene(root, 800,600));
             newStage.show();
+
+            DodanieNazwyQuizuController dodanieNazwyQuizuController = fxmlLoader.getController();
+            dodanieNazwyQuizuController.UstawLogin(ZalogowanyUzytkownik.getLogin());
+            dodanieNazwyQuizuController.DodajUzytkownika(ZalogowanyUzytkownik);
 
             // Zamknij bieżące okno
             Stage currentStage = (Stage) DodajQuizButton.getScene().getWindow();
