@@ -25,7 +25,7 @@ public class MainController {
     private Button DodajQuizButton;
     @FXML
     private Label LoginField;
-    VBox quizContainer;
+    @FXML VBox quizContainer;
     private Uzytkownik ZalogowanyUzytkownik;
 
     public void initialize() {
