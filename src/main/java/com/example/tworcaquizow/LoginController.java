@@ -1,23 +1,22 @@
 package com.example.tworcaquizow;
 
-import Uzytkownik.Uzytkownik;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import Uzytkownik.Uzytkownik;
 import java.io.IOException;
-
-import java.sql.SQLException;
-
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class LoginController {
     String DATABASE_URL = "jdbc:sqlite:C:\\Users\\araba\\IdeaProjects\\tworca-quizow\\src\\main\\databases\\db_login.db";
+    private Uzytkownik uzytkownik;
 
     @FXML
     private Label statusLabel;
@@ -25,7 +24,6 @@ public class LoginController {
     private TextField loginField;
     @FXML
     private TextField passwordField;
-    private Uzytkownik uzytkownik;
 
     public void loginButton(ActionEvent event) {
         String login = loginField.getText();
@@ -39,39 +37,19 @@ public class LoginController {
                 statusLabel.setTextFill(Color.GREEN);
                 loginField.clear();
                 passwordField.clear();
-            }
-            else {
+            } else {
                 statusLabel.setText("Nie ma takiego konta");
                 uzytkownik.Wyloguj();
                 statusLabel.setTextFill(Color.RED);
                 loginField.clear();
                 passwordField.clear();
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Błąd: " + e.getMessage());
         }
-        if (uzytkownik.getStanZalogowania()) {
-            try {
-                // Załaduj nowe okno
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainPanel.fxml"));
-                Parent root = fxmlLoader.load();
-
-                // Utwórz nową scenę i okno
-                Stage newStage = new Stage();
-                newStage.setTitle("Main Panel");
-                newStage.setScene(new Scene(root));
-                newStage.show();
-
-                // Zamknij bieżące okno
-                Stage currentStage = (Stage) loginField.getScene().getWindow(); // Pobierz bieżący Stage
-                currentStage.close();
-            } catch (IOException e) {
-                System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-            }
-        }
-
+        ZalogowanieUzytkownika(uzytkownik);
     }
+
     @FXML
     public void registerButton(ActionEvent event) {
         String login = loginField.getText();
@@ -79,7 +57,7 @@ public class LoginController {
 
         try (Connection conn = LoginDataBase.connectToDatabase(DATABASE_URL)) {
             LoginDataBase.createTableIfNotExists(conn);
-            if (LoginDataBase.check_logins(conn, login) == true) {
+            if (LoginDataBase.check_logins(conn, login)) {
                 statusLabel.setText("Ten login już istnieje");
                 statusLabel.setTextFill(Color.RED);
                 loginField.clear();
@@ -88,6 +66,8 @@ public class LoginController {
             else {
                 LoginDataBase.addUserData(conn, login, password);
                 statusLabel.setText("Konto zostało dodane poprawnie");
+                uzytkownik = new Uzytkownik(login, password);
+                uzytkownik.Zaloguj();
                 statusLabel.setTextFill(Color.GREEN);
                 loginField.clear();
                 passwordField.clear();
@@ -95,6 +75,32 @@ public class LoginController {
         }
         catch (SQLException e) {
             System.out.println("Błąd: " + e.getMessage());
+        }
+        ZalogowanieUzytkownika(uzytkownik);
+    }
+
+    public void ZalogowanieUzytkownika(Uzytkownik uzytkownik) {
+        if (uzytkownik.getStanZalogowania()) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainPanel.fxml"));
+                Parent root = fxmlLoader.load();
+
+                MainController mainController = fxmlLoader.getController();
+
+                mainController.UstawLogin(uzytkownik.getLogin());
+                mainController.DodajUzytkownika(uzytkownik);
+                mainController.WyswietlLiczbePunktow();
+
+                Stage newStage = new Stage();
+                newStage.setTitle("Main Panel");
+                newStage.setScene(new Scene(root,800,600));
+                newStage.show();
+
+                Stage currentStage = (Stage) loginField.getScene().getWindow();
+                currentStage.close();
+            } catch (IOException e) {
+                System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
+            }
         }
     }
 }

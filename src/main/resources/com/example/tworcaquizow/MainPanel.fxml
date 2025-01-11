@@ -3,14 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.16080402010050251" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.MainController">
+<SplitPane dividerPositions="0.16080402010050251" fx:controller="com.example.tworcaquizow.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="598.0">
             <children>
-                <Button layoutX="725.0" layoutY="18.0" mnemonicParsing="false" text="Wyloguj" />
-                <Button layoutX="638.0" layoutY="18.0" mnemonicParsing="false" text="Dodaj quiz" />
-                <Label layoutX="14.0" layoutY="35.0" prefHeight="24.0" prefWidth="82.0" text="username" />
-            <TextField editable="false" layoutX="725.0" layoutY="59.0" prefHeight="26.0" prefWidth="60.0" />
+                <Button fx:id="WylogujButton" onAction="#WylogujButton" layoutX="725.0" layoutY="18.0" mnemonicParsing="false" text="Wyloguj" />
+                <Button fx:id="DodajQuizButton" onAction="#DodajQuizButton" layoutX="638.0" layoutY="18.0" mnemonicParsing="false" text="Dodaj quiz" />
+                <Label fx:id="LoginField" layoutX="14.0" layoutY="35.0" prefHeight="24.0" prefWidth="82.0" text="login" />
+            <TextField fx:id = "LiczbaPunktowField" editable="false" layoutX="725.0" layoutY="59.0" prefHeight="26.0" prefWidth="60.0" />
             <Label alignment="CENTER" layoutX="623.0" layoutY="60.0" prefHeight="24.0" prefWidth="102.0" text="liczba punktów:" />
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="598.0">
