@@ -34,10 +34,19 @@ public class QuizController {
     private Quiz quiz;
     private Uzytkownik uzytkownik;
     private int points;
+    private LoginDataBase loginDataBase;
 
     public void initialize() {
         redXIcon = new Image(getClass().getResource("/icons/red-x.png").toExternalForm());
         greenIcon = new Image(getClass().getResource("/icons/green-tick.png").toExternalForm());
+    }
+
+    public QuizController() {
+        try {
+            loginDataBase = new LoginDataBase();
+        } catch (SQLException e) {
+            System.out.println("Błąd połączenia z bazą danych: " + e.getMessage());
+        }
     }
 
     public Quiz getQuiz() {
@@ -108,7 +117,9 @@ public class QuizController {
         for (Button button : buttons) {
             button.setOnAction(event -> {
                 if (button.getText().equals(correctAnswer)) {
-                    points++;
+                    uzytkownik.ZwiekszLiczbePunktow();
+                    points = uzytkownik.getLiczbaPunktow();
+                    loginDataBase.updatePoints(uzytkownik.getLogin(), uzytkownik.getHaslo(), points);
                 }
                 for (int i = 0; i < buttons.size(); i++) {
                     buttons.get(i).setGraphic(icons.get(i));

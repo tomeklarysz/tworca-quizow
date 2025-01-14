@@ -3,8 +3,8 @@ package com.example.tworcaquizow;
 import java.sql.*;
 
 public class QuizyDatabase {
-//    public static final String DATABASE_URL = "jdbc:sqlite:/home/karol/IdeaProjects/tworca-quizow/src/main/databases/quiz.db";
-    public static final String DATABASE_URL = "jdbc:sqlite:C:\\Users\\ttome\\IdeaProjects\\tworca-quizow\\src\\main\\databases\\quiz.db";
+    public static final String DATABASE_URL = "jdbc:sqlite:C:\\Users\\araba\\IdeaProjects\\tworca-quizow\\src\\main\\databases\\quiz.db";
+    //public static final String DATABASE_URL = "jdbc:sqlite:C:\\Users\\ttome\\IdeaProjects\\tworca-quizow\\src\\main\\databases\\quiz.db";
     public static Connection connectToDatabase() throws SQLException {
         return DriverManager.getConnection(DATABASE_URL);
     }

@@ -26,7 +26,7 @@ public class DodanieQuizuController {
     private QuizDatabase quizDatabase;
     private int currentQuizId;
 
-    public DodanieQuizuController() {
+    public void initialize() {
         try {
             quizDatabase = new QuizDatabase();
         } catch (SQLException e) {

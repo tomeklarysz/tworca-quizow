@@ -4,14 +4,11 @@ import Uzytkownik.Uzytkownik;
 import javafx.event.ActionEvent;
 import Quiz.Quiz;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
@@ -20,16 +17,41 @@ public class MainController {
     @FXML
     public TextField LiczbaPunktowField;
     @FXML
-    private Button WylogujButton;
+    public ListView rankingListView;
     @FXML
     private Button DodajQuizButton;
     @FXML
     private Label LoginField;
-    @FXML VBox quizContainer;
+    @FXML
+    private VBox quizContainer;
     private Uzytkownik ZalogowanyUzytkownik;
+    private LoginDataBase loginDataBase;
 
     public void initialize() {
         populateQuiz();
+        try {
+            loginDataBase = new LoginDataBase();
+        } catch (SQLException e) {
+            System.out.println("Błąd połączenia z bazą danych: " + e.getMessage());
+        }
+
+        if (loginDataBase != null) {
+            try {
+                String query = "SELECT login, punkty FROM uzytkownicy ORDER BY punkty DESC";
+                PreparedStatement stmt = loginDataBase.getConnection().prepareStatement(query);
+                ResultSet resultSet = stmt.executeQuery();
+
+                while (resultSet.next()) {
+                    String login = resultSet.getString("login");
+                    int punkty = resultSet.getInt("punkty");
+
+                    String rankingEntry = login + " - " + punkty + " pkt";
+                    rankingListView.getItems().add(rankingEntry);
+                }
+            } catch (SQLException e) {
+                System.out.println("Błąd podczas pobierania danych: " + e.getMessage());
+            }
+        }
     }
 
     private void populateQuiz() {
@@ -144,7 +166,7 @@ public class MainController {
     }
 
     public void WyswietlLiczbePunktow() {
-        LiczbaPunktowField.setText(String.valueOf(ZalogowanyUzytkownik.getLiczbaPunktow()));
+        LiczbaPunktowField.setText(String.valueOf(loginDataBase.getPointsForUser(ZalogowanyUzytkownik.getLogin())));
     }
 
     public void DodajUzytkownika(Uzytkownik uzytkownik) {
