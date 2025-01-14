@@ -15,7 +15,6 @@ import java.sql.SQLException;
 public class DodanieNazwyQuizuController {
     public Label LoginField;
     public Button WyjdzButtonField;
-    public Button WylogujButtonField;
     public Uzytkownik ZalogowanyUzytkownik;
     public Button DalejButtonField;
     public TextField NazwaQuizuField;
@@ -34,23 +33,7 @@ public class DodanieNazwyQuizuController {
             newStage.setTitle("Main Panel");
             newStage.setScene(new Scene(root, 800,600));
             newStage.show();
-            Stage currentStage = (Stage) WylogujButtonField.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-        }
-    }
-
-    public void WylogujButton(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPanel.fxml"));
-            Parent root = fxmlLoader.load();
-
-            Stage newStage = new Stage();
-            newStage.setTitle("Main Panel");
-            newStage.setScene(new Scene(root, 800,600));
-            newStage.show();
-            Stage currentStage = (Stage) WylogujButtonField.getScene().getWindow();
+            Stage currentStage = (Stage) WyjdzButtonField.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
             System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
@@ -98,7 +81,7 @@ public class DodanieNazwyQuizuController {
                 newStage.setScene(new Scene(root, 800, 600));
                 newStage.show();
 
-                Stage currentStage = (Stage) WylogujButtonField.getScene().getWindow();
+                Stage currentStage = (Stage) WyjdzButtonField.getScene().getWindow();
                 currentStage.close();
             } else {
                 System.out.println("Wystąpił problem podczas dodawania quizu do bazy danych.");

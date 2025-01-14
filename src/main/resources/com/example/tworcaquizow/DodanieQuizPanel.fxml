@@ -17,9 +17,8 @@
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <Label fx:id="LoginField" prefHeight="26.0" prefWidth="607.0" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Login" />
+            <Label fx:id="LoginField" prefHeight="26.0" prefWidth="701.0" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Login" />
             <Button fx:id="WyjdzButtonField" onAction="#WyjdzButton" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Wyjdź" />
-            <Button fx:id="WylogujButtonField" onAction="#WylogujButton" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Wyloguj" />
         </HBox>
     </top>
 

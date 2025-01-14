@@ -12,8 +12,7 @@
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <Label fx:id="loginField" prefHeight="26.0" prefWidth="675.0" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Login" />
-            <Button style="-fx-font-size: 16px; -fx-text-fill: black;" text="Wyloguj" />
+            <Label fx:id="loginField" prefHeight="26.0" prefWidth="766.0" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Login" />
         </HBox>
     </top>
 
