@@ -13,27 +13,30 @@ public class QuizDatabase {
 
     private void createTables() throws SQLException {
         String createQuizTable = """
-            CREATE TABLE IF NOT EXISTS quiz (
+            CREATE TABLE IF NOT EXISTS quizy (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT
+                name TEXT NOT NULL,
+                description TEXT
             );
         """;
 
         String createQuestionsTable = """
             CREATE TABLE IF NOT EXISTS questions (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+                text TEXT NOT NULL,
                 quiz_id INTEGER,
-                question_text TEXT,
-                FOREIGN KEY (quiz_id) REFERENCES quiz(id)
+                FOREIGN KEY (quiz_id) REFERENCES quizy(id)
             );
         """;
 
         String createAnswersTable = """
             CREATE TABLE IF NOT EXISTS answers (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+                text TEXT NOT NULL,
                 question_id INTEGER,
-                answer_text TEXT,
+                quiz_id INTEGER,
                 FOREIGN KEY (question_id) REFERENCES questions(id)
+                FOREIGN KEY (quiz_id) REFERENCES quizy(id)
             );
         """;
 
@@ -45,7 +48,7 @@ public class QuizDatabase {
     }
 
     public int addQuiz(String quizName) throws SQLException {
-        String sql = "INSERT INTO quiz (name) VALUES (?)";
+        String sql = "INSERT INTO quizy (name) VALUES (?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, quizName);
             pstmt.executeUpdate();
@@ -60,10 +63,10 @@ public class QuizDatabase {
     }
 
         public int addQuestion(int quizId, String questionText) throws SQLException {
-        String sql = "INSERT INTO questions (quiz_id, question_text) VALUES (?, ?)";
+        String sql = "INSERT INTO questions (text, quiz_id) VALUES (?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            pstmt.setInt(1, quizId);
-            pstmt.setString(2, questionText);
+            pstmt.setString(1, questionText);
+            pstmt.setInt(2, quizId);
             pstmt.executeUpdate();
 
             try (ResultSet keys = pstmt.getGeneratedKeys()) {
@@ -75,11 +78,12 @@ public class QuizDatabase {
         return -1;
     }
 
-    public void addAnswer(int questionId, String answerText) throws SQLException {
-        String sql = "INSERT INTO answers (question_id, answer_text) VALUES (?, ?)";
+    public void addAnswer(int quizId, int questionId, String answerText) throws SQLException {
+        String sql = "INSERT INTO answers (text, question_id, quiz_id) VALUES (?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, questionId);
-            pstmt.setString(2, answerText);
+            pstmt.setString(1, answerText);
+            pstmt.setInt(2, questionId);
+            pstmt.setInt(3, quizId);
             pstmt.executeUpdate();
         }
     }

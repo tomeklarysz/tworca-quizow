@@ -41,6 +41,8 @@ public class DodanieQuizuController {
 
             MainController mainController = fxmlLoader.getController();
             mainController.UstawLogin(ZalogowanyUzytkownik.getLogin());
+            mainController.DodajUzytkownika(ZalogowanyUzytkownik);
+            mainController.WyswietlLiczbePunktow();
 
             Stage newStage = new Stage();
             newStage.setTitle("Main Panel");
@@ -80,10 +82,10 @@ public class DodanieQuizuController {
 
             int questionId = quizDatabase.addQuestion(currentQuizId, pytanie);
             if (questionId != -1) {
-                quizDatabase.addAnswer(questionId, poprawnaOdpowiedz);
-                quizDatabase.addAnswer(questionId, zlaOdpowiedz1);
-                quizDatabase.addAnswer(questionId, zlaOdpowiedz2);
-                quizDatabase.addAnswer(questionId, zlaOdpowiedz3);
+                quizDatabase.addAnswer(currentQuizId, questionId, poprawnaOdpowiedz);
+                quizDatabase.addAnswer(currentQuizId, questionId, zlaOdpowiedz1);
+                quizDatabase.addAnswer(currentQuizId, questionId, zlaOdpowiedz2);
+                quizDatabase.addAnswer(currentQuizId, questionId, zlaOdpowiedz3);
 
                 System.out.println("Dodano pytanie i odpowiedzi do bazy danych.");
             } else {
