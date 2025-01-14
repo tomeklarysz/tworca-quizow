@@ -27,6 +27,8 @@ public class DodanieNazwyQuizuController {
 
             MainController mainController = fxmlLoader.getController();
             mainController.UstawLogin(ZalogowanyUzytkownik.getLogin());
+            mainController.DodajUzytkownika(ZalogowanyUzytkownik);
+            mainController.WyswietlLiczbePunktow();
 
             Stage newStage = new Stage();
             newStage.setTitle("Main Panel");

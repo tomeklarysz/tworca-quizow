@@ -79,6 +79,8 @@ public class MainController {
             controller.setQuiz(quiz);
             controller.setLabel(quiz.getName());
             controller.setDescription(quiz.getDescription());
+            controller.setUzytkownik(ZalogowanyUzytkownik);
+            controller.ustawLogin(ZalogowanyUzytkownik.getLogin());
 
             // Zamknij bieżące okno
             Stage currentStage = (Stage) quizContainer.getScene().getWindow(); // Pobierz bieżący Stage

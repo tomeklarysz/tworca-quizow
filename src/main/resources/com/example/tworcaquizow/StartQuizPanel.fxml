@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.StartQuizController">
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.StartQuizController">
     <!-- Top Bar: Login, Wyjdź, Wyloguj -->
     <top>
-        <HBox alignment="CENTER_RIGHT" spacing="10">
+        <HBox alignment="CENTER" spacing="10">
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <Label prefHeight="26.0" prefWidth="607.0" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Login" />
-            <Button style="-fx-font-size: 16px; -fx-text-fill: black;" text="Wyjdź" />
+            <Label fx:id="loginField" prefHeight="26.0" prefWidth="675.0" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Login" />
             <Button style="-fx-font-size: 16px; -fx-text-fill: black;" text="Wyloguj" />
         </HBox>
     </top>
@@ -45,12 +40,12 @@
             </Label>
             <HBox alignment="CENTER" layoutX="250.0" layoutY="369.0" prefHeight="74.0" prefWidth="300.0" spacing="15.0">
                <children>
-                  <Button fx:id="anulujQuiz" onAction="#quitQuiz" layoutX="105.0" layoutY="48.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="141.0" text="Anuluj">
+                  <Button fx:id="anulujQuiz" layoutX="105.0" layoutY="48.0" mnemonicParsing="false" onAction="#quitQuiz" prefHeight="39.0" prefWidth="141.0" text="Anuluj">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="startQuiz" onAction="#startQuiz" layoutX="153.0" layoutY="41.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="141.0" text="Tak">
+                  <Button fx:id="startQuiz" layoutX="153.0" layoutY="41.0" mnemonicParsing="false" onAction="#startQuiz" prefHeight="39.0" prefWidth="141.0" text="Tak">
                      <font>
                         <Font size="18.0" />
                      </font>

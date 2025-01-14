@@ -1,6 +1,7 @@
 package com.example.tworcaquizow;
 
 import Quiz.Quiz;
+import Uzytkownik.Uzytkownik;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,9 +19,10 @@ public class StartQuizController {
     @FXML Button startQuiz;
     @FXML Button anulujQuiz;
     @FXML Label quizLabel;
-    @FXML
-    TextArea quizDesc;
+    @FXML TextArea quizDesc;
+    @FXML public Label loginField;
     private Quiz quiz;
+    private Uzytkownik uzytkownik;
 
     public void setLabel(String label) {
         quizLabel.setText(label);
@@ -40,6 +42,11 @@ public class StartQuizController {
             newStage.setTitle("Main Panel");
             newStage.setScene(new Scene(root));
             newStage.show();
+
+            MainController controller = fxmlLoader.getController();
+            controller.DodajUzytkownika(uzytkownik);
+            controller.UstawLogin(uzytkownik.getLogin());
+            controller.WyswietlLiczbePunktow();
 
             Stage currentStage = (Stage) quizLabel.getScene().getWindow(); // Pobierz bieżący Stage
             currentStage.close();
@@ -63,6 +70,8 @@ public class StartQuizController {
 
             QuizController controller = fxmlLoader.getController();
             controller.setQuiz(quiz);
+            controller.setUzytkownik(uzytkownik);
+            controller.ustawLogin(uzytkownik.getLogin());
 
             Stage currentStage = (Stage) quizLabel.getScene().getWindow(); // Pobierz bieżący Stage
             currentStage.close();
@@ -80,5 +89,18 @@ public class StartQuizController {
 
     public void setQuiz(Quiz quiz) {
         this.quiz = quiz;
+    }
+
+    public void setUzytkownik(Uzytkownik uzytkownik) {
+        this.uzytkownik = uzytkownik;
+    }
+
+//    to sie powtarza we wszystkich kontrolerach
+    public void ustawLogin(String login) {
+        if (login != null && !login.isEmpty()) {
+            loginField.setText(login);
+        } else {
+            loginField.setText("Nieznany użytkownik");
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.tworcaquizow;
 
+import Uzytkownik.Uzytkownik;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +14,10 @@ import java.io.IOException;
 
 public class EndQuizController {
 
+    @FXML public Label loginField;
     @FXML private Button quitButton;
     @FXML private Label goodbyeText;
+    private Uzytkownik uzytkownik;
 
     public void initialize() {
         quitButton.setOnAction((ActionEvent event) -> quitQuiz());
@@ -36,11 +39,29 @@ public class EndQuizController {
             newStage.setScene(new Scene(root));
             newStage.show();
 
+            MainController controller = fxmlLoader.getController();
+            controller.UstawLogin(uzytkownik.getLogin());
+            controller.DodajUzytkownika(uzytkownik);
+            controller.WyswietlLiczbePunktow();
+
             Stage currentStage = (Stage) goodbyeText.getScene().getWindow(); // Pobierz bieżący Stage
             currentStage.close();
 
         } catch (IOException e) {
             System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
+        }
+    }
+
+    public void setUzytkownik(Uzytkownik uzytkownik) {
+        this.uzytkownik = uzytkownik;
+    }
+
+    //    to sie powtarza we wszystkich kontrolerach
+    public void ustawLogin(String login) {
+        if (login != null && !login.isEmpty()) {
+            loginField.setText(login);
+        } else {
+            loginField.setText("Nieznany użytkownik");
         }
     }
 }
