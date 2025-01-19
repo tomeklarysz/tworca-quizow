@@ -35,6 +35,8 @@ public class Uzytkownik {
         liczbaPunktow++;
     }
 
+    public void WyzerujLiczbePunktow() { liczbaPunktow = 0;}
+
     public Integer getLiczbaPunktow() {
         return liczbaPunktow;
     }

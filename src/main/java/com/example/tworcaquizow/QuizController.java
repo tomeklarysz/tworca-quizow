@@ -119,7 +119,7 @@ public class QuizController {
                 if (button.getText().equals(correctAnswer)) {
                     uzytkownik.ZwiekszLiczbePunktow();
                     points = uzytkownik.getLiczbaPunktow();
-                    loginDataBase.updatePoints(uzytkownik.getLogin(), uzytkownik.getHaslo(), points);
+                    System.out.println(points);
                 }
                 for (int i = 0; i < buttons.size(); i++) {
                     buttons.get(i).setGraphic(icons.get(i));
@@ -151,6 +151,8 @@ public class QuizController {
             controller.setGoodbyeAndPoints(points);
             controller.setUzytkownik(uzytkownik);
             controller.ustawLogin(uzytkownik.getLogin());
+            uzytkownik.WyzerujLiczbePunktow();
+            loginDataBase.updatePoints(uzytkownik.getLogin(), uzytkownik.getHaslo(), points);
 
             Stage currentStage = (Stage) finishQuizButton.getScene().getWindow(); // Pobierz bieżący Stage
             currentStage.close();

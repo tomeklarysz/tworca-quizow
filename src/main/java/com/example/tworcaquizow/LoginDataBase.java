@@ -83,25 +83,23 @@ public class LoginDataBase {
         return false;
     }
 
-    public boolean updatePoints(String login, String password, int newPoints) {
-        String updateSQL = "UPDATE uzytkownicy SET punkty = ? WHERE login = ? AND password = ?";
+    public void updatePoints(String login, String password, int additionalPoints) {
+        String updateSQL = "UPDATE uzytkownicy SET punkty = punkty + ? WHERE login = ? AND password = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(updateSQL)) {
-            stmt.setInt(1, newPoints);
+            stmt.setInt(1, additionalPoints);
             stmt.setString(2, login);
             stmt.setString(3, password);
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("Liczba punktów została zaktualizowana.");
-                return true;
             } else {
                 System.out.println("Nie znaleziono konta o podanym loginie i haśle.");
             }
         } catch (SQLException e) {
             System.out.println("Błąd podczas aktualizacji punktów: " + e.getMessage());
         }
-        return false;
     }
 
     public int getPointsForUser(String login) {

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.tworcaquizow.LoginController">
+<VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.LoginController">
   <padding>
     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
   </padding>
@@ -18,38 +24,46 @@
   </Label>
 
   <!-- GridPane for the login form -->
-  <GridPane hgap="10" vgap="10" alignment="CENTER">
-    <Label text="Login:" GridPane.rowIndex="0" GridPane.columnIndex="0">
+  <GridPane alignment="CENTER" hgap="10" vgap="10">
+    <Label style="-fx-text-fill: #4B0082;" text="Login:" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <font>
-        <Font name="Arial" size="12" />
+        <Font name="Arial" size="18.0" />
       </font>
     </Label>
-    <TextField fx:id="loginField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200" prefHeight="30">
+    <TextField fx:id="loginField" prefHeight="30" prefWidth="200" style="-fx-background-color: #ffffff; -fx-border-color: #4B0082; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="0">
       <font>
         <Font name="Arial" size="12" />
       </font>
     </TextField>
 
-    <Label text="Hasło:" GridPane.rowIndex="1" GridPane.columnIndex="0">
+    <Label style="-fx-text-fill: #4B0082;" text="Hasło:" GridPane.columnIndex="0" GridPane.rowIndex="1">
       <font>
-        <Font name="Arial" size="12" />
+        <Font name="Arial" size="18.0" />
       </font>
     </Label>
-    <PasswordField fx:id="passwordField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200" prefHeight="30">
+    <PasswordField fx:id="passwordField" prefHeight="30" prefWidth="200" style="-fx-background-color: #ffffff; -fx-border-color: #4B0082; -fx-border-radius: 5; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
       <font>
         <Font name="Arial" size="12" />
       </font>
     </PasswordField>
+    <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+    </rowConstraints>
   </GridPane>
 
   <!-- Buttons section -->
-  <VBox spacing="10" alignment="CENTER">
-    <Button  fx:id="loginButton" text="Zaloguj się" onAction="#loginButton" minWidth="150" minHeight="40">
+  <VBox alignment="CENTER" spacing="10">
+    <Button fx:id="loginButton" minHeight="40" minWidth="150" onAction="#loginButton" style="-fx-background-color: #9370DB; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 10;" text="Zaloguj się">
       <font>
-        <Font name="Arial" size="14" />
+        <Font name="Arial" size="18.0" />
       </font>
     </Button>
-    <Button  fx:id="registerButton" text="Zarejestruj się" onAction="#registerButton" minWidth="150" minHeight="40">
+    <Button fx:id="registerButton" minHeight="40" minWidth="150" onAction="#registerButton" style="-fx-background-color: #9370DB; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 10;" text="Zarejestruj się">
       <font>
         <Font name="Arial" size="14" />
       </font>

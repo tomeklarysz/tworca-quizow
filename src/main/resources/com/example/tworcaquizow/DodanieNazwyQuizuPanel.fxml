@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.DodanieNazwyQuizuController">
-    <!-- Top Bar: Login, Wyjdź, Wyloguj -->
+<BorderPane prefHeight="600" prefWidth="800" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.DodanieNazwyQuizuController">
+    <!-- Top Bar: Login, Wyjdź -->
     <top>
-        <HBox alignment="CENTER_RIGHT" spacing="10">
-            <padding>
-                <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
-            <Label fx:id="LoginField" prefHeight="26.0" prefWidth="701.0" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Login" />
-            <Button fx:id="WyjdzButtonField" onAction="#WyjdzButton" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Wyjdź" />
+        <HBox alignment="CENTER_RIGHT" prefHeight="73.0" prefWidth="800.0" spacing="10">
+            <Label fx:id="LoginField" prefHeight="30.0" prefWidth="627.0" style="-fx-font-size: 20px; -fx-text-fill: #4B0082; -fx-font-family: 'Roboto'; -fx-font-weight: bold;" text="Login" />
+            <Button fx:id="WyjdzButtonField" onAction="#WyjdzButton" prefHeight="48.0" prefWidth="146.0" style="-fx-font-size: 14px; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-background-radius: 15; -fx-padding: 5 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);" text="Wyjdź" />
         </HBox>
     </top>
 
-    <!-- Central Section: Question and Answers -->
+    <!-- Central Section: Nazwa Quizu -->
     <center>
-        <GridPane alignment="CENTER" hgap="10" prefHeight="376.0" prefWidth="800.0" vgap="20">
+        <GridPane alignment="CENTER" hgap="15" prefHeight="386.0" prefWidth="800.0" style="-fx-padding: 30;" vgap="30">
             <padding>
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
-            <!-- Question Label -->
-            <Label prefHeight="66.0" prefWidth="97.0" style="-fx-font-size: 16px;" text="Nazwa Quizu:" GridPane.rowIndex="2" />
-            <TextField fx:id="NazwaQuizuField" style="-fx-pref-width: 300px;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <!-- Label -->
+            <Label prefHeight="50.0" prefWidth="150.0" style="-fx-font-size: 18px; -fx-text-fill: #4B0082; -fx-font-family: 'Arial';" text="Nazwa Quizu:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="NazwaQuizuField" prefHeight="40.0" prefWidth="320.0" style="-fx-pref-width: 320px; -fx-background-color: #ffffff; -fx-border-color: #4B0082; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" />
                 <ColumnConstraints />
@@ -33,20 +36,14 @@
                 <RowConstraints minHeight="40.0" />
                 <RowConstraints />
                 <RowConstraints />
-                <RowConstraints />
-                <RowConstraints />
-            <RowConstraints />
             </rowConstraints>
         </GridPane>
     </center>
 
     <!-- Bottom Buttons -->
     <bottom>
-        <HBox alignment="CENTER" prefHeight="198.0" prefWidth="800.0" spacing="20">
-            <padding>
-                <Insets bottom="20" left="20" right="20" top="20" />
-            </padding>
-            <Button fx:id="DalejButtonField" onAction="#DalejButton" style="-fx-font-size: 16px; -fx-pref-width: 150px;" text="Dalej" />
+        <HBox alignment="CENTER" prefHeight="126.0" prefWidth="800.0" spacing="20">
+            <Button fx:id="DalejButtonField" onAction="#DalejButton" prefHeight="56.0" prefWidth="200.0" style="-fx-font-size: 14px; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-background-radius: 10; -fx-padding: 5 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);" text="Dalej" />
         </HBox>
     </bottom>
 </BorderPane>

@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.16080402010050251" fx:controller="com.example.tworcaquizow.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.MainController">
     <items>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="598.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="185.0" prefWidth="800.0">
             <children>
-                <Button fx:id="WylogujButton" onAction="#WylogujButton" layoutX="725.0" layoutY="18.0" mnemonicParsing="false" text="Wyloguj" />
-                <Button fx:id="DodajQuizButton" onAction="#DodajQuizButton" layoutX="638.0" layoutY="18.0" mnemonicParsing="false" text="Dodaj quiz" />
-                <Label fx:id="LoginField" layoutX="14.0" layoutY="35.0" prefHeight="24.0" prefWidth="82.0" text="login" />
-            <TextField fx:id = "LiczbaPunktowField" editable="false" layoutX="725.0" layoutY="59.0" prefHeight="26.0" prefWidth="60.0" />
-            <Label alignment="CENTER" layoutX="623.0" layoutY="60.0" prefHeight="24.0" prefWidth="102.0" text="liczba punktów:" />
-            </children></AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="598.0">
+                <Button fx:id="WylogujButton" layoutX="625.0" layoutY="18.0" minHeight="40" minWidth="120" mnemonicParsing="false" onAction="#WylogujButton" style="-fx-background-color: #9370DB; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);" text="Wyloguj" />
+                <Button fx:id="DodajQuizButton" layoutX="467.0" layoutY="18.0" minHeight="40" minWidth="120" mnemonicParsing="false" onAction="#DodajQuizButton" style="-fx-background-color: #9370DB; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);" text="Dodaj quiz" />
+                <Label fx:id="LoginField" layoutX="39.0" layoutY="43.0" prefHeight="30.0" prefWidth="150.0" style="-fx-text-fill: #4B0082; -fx-font-size: 20; -fx-font-family: 'Roboto';" text="login" />
+                <TextField fx:id="LiczbaPunktowField" editable="false" layoutX="650.0" layoutY="66.0" prefHeight="24.0" prefWidth="70.0" style="-fx-background-color: #ffffff; -fx-border-color: #4B0082; -fx-border-radius: 10; -fx-background-radius: 10;" />
+                <Label alignment="CENTER" layoutX="467.0" layoutY="68.0" prefHeight="24.0" prefWidth="120.0" style="-fx-text-fill: #4B0082; -fx-font-size: 14; -fx-font-family: 'Roboto';" text="Liczba punktów:" />
+            </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="800.0">
             <children>
-                <SplitPane dividerPositions="0.5" orientation="HORIZONTAL" prefHeight="499.0" prefWidth="799.0">
+                <SplitPane dividerPositions="0.5" orientation="HORIZONTAL" prefHeight="499.0" prefWidth="800.0">
                     <items>
-                        <VBox fx:id="quizContainer" prefHeight="200.0" prefWidth="100.0">
+                        <VBox fx:id="quizContainer" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="350.0" spacing="15" style="-fx-background-color: #ffffff;">
                             <children>
-                                <Hyperlink style="-fx-font-weight: 700;" text="Quiz 1" />
+                                <Hyperlink style="-fx-text-fill: #4B0082; -fx-font-size: 20; -fx-font-family: 'Roboto';" text="Quiz 1">
+                           <font>
+                              <Font size="30.0" />
+                           </font></Hyperlink>
+                                <Hyperlink style="-fx-text-fill: #4B0082; -fx-font-size: 20; -fx-font-family: 'Roboto';" text="Quiz 2" />
+                                <Hyperlink style="-fx-text-fill: #4B0082; -fx-font-size: 20; -fx-font-family: 'Roboto';" text="Quiz 3" />
                             </children>
                         </VBox>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="350.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="140.0" layoutY="14.0" prefHeight="31.0" prefWidth="116.0" text="Ranking" />
-                                <ListView fx:id="rankingListView" layoutX="58.0" layoutY="49.0" prefHeight="399.0" prefWidth="279.0" />
+                                <Label alignment="CENTER" layoutX="110.0" layoutY="14.0" prefHeight="50.0" prefWidth="180.0" style="-fx-text-fill: #4B0082; -fx-font-size: 24; -fx-font-weight: bold; -fx-font-family: 'Roboto';" text="Ranking" />
+                                <ListView fx:id="rankingListView" layoutX="60.0" layoutY="61.0" prefHeight="387.0" prefWidth="280.0" style="-fx-border-color: #9370DB; -fx-border-radius: 15; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 2, 2);" />
                             </children>
                         </AnchorPane>
                     </items>
                 </SplitPane>
-            </children></AnchorPane>
+            </children>
+        </AnchorPane>
     </items>
 </SplitPane>

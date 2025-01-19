@@ -5,56 +5,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.QuizController">
-    <!-- Top Bar: Login, Wyjdź, Wyloguj -->
+<BorderPane prefHeight="600" prefWidth="800" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tworcaquizow.QuizController">
+    <!-- Top Bar: Login -->
     <top>
-        <HBox alignment="CENTER" spacing="10">
+        <HBox alignment="CENTER" spacing="10" prefHeight="78.0" prefWidth="800.0">
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
             </padding>
-            <Label fx:id="loginField" prefHeight="26.0" prefWidth="766.0" style="-fx-font-size: 16px; -fx-text-fill: black;" text="Login" />
+            <Label fx:id="loginField" prefHeight="26.0" prefWidth="766.0" style="-fx-font-size: 20px; -fx-text-fill: #4B0082; -fx-font-family: 'Roboto'; -fx-font-weight: bold;" text="Login" />
         </HBox>
     </top>
 
     <!-- Central Section: Question and Answers -->
     <center>
-        <GridPane alignment="TOP_CENTER" hgap="30.0" prefWidth="800.0" vgap="30.0">
+        <GridPane alignment="TOP_CENTER" hgap="30.0" vgap="30.0" prefWidth="800.0" style="-fx-padding: 20;">
             <!-- Question Text -->
-            <Label fx:id="pytanieText" prefHeight="154.0" prefWidth="631.0" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-alignment: CENTER; -fx-wrap-text: true;" text="Państwo, w którym stoi wieża Eiffla" GridPane.columnSpan="2" />
+            <Label fx:id="pytanieText" prefHeight="154.0" prefWidth="631.0" style="-fx-font-size: 20px; -fx-text-fill: #4B0082; -fx-alignment: CENTER; -fx-wrap-text: true; -fx-font-family: 'Roboto'; -fx-font-weight: bold;" text="Państwo, w którym stoi wieża Eiffla" GridPane.columnSpan="2" />
 
             <!-- Answer Buttons -->
-            <Button fx:id="buttonA" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px;" text="ODP1" GridPane.rowIndex="1" />
-            <Button fx:id="buttonB" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px;" text="ODP2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="buttonC" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px;" text="ODP3" GridPane.rowIndex="2" />
-            <Button fx:id="buttonD" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px;" text="ODP4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <columnConstraints>
-            <ColumnConstraints maxWidth="300.0" minWidth="300.0" prefWidth="300.0" />
-            <ColumnConstraints maxWidth="301.0" minWidth="301.0" prefWidth="301.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints fillHeight="false" />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
+            <Button fx:id="buttonA" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);" text="ODP1" GridPane.rowIndex="1" />
+            <Button fx:id="buttonB" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);" text="ODP2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="buttonC" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);" text="ODP3" GridPane.rowIndex="2" />
+            <Button fx:id="buttonD" style="-fx-font-size: 18px; -fx-pref-width: 300px; -fx-pref-height: 50px; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);" text="ODP4" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <columnConstraints>
+                <ColumnConstraints maxWidth="300.0" minWidth="300.0" prefWidth="300.0" />
+                <ColumnConstraints maxWidth="301.0" minWidth="301.0" prefWidth="301.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints fillHeight="false" />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
         </GridPane>
     </center>
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="179.0" prefWidth="800.0" spacing="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="finishQuizButton" layoutX="242.0" layoutY="40.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="222.0" text="Zakończ quiz">
-               <font>
-                  <Font size="20.0" />
-               </font>
+
+    <!-- Bottom Section: Buttons -->
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="130.0" prefWidth="800.0" spacing="20" style="-fx-background-color: #E6E6FA;">
+            <Button fx:id="finishQuizButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="222.0" text="Zakończ quiz" style="-fx-font-size: 20px; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-background-radius: 15; -fx-padding: 5 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);">
             </Button>
-            <Button fx:id="nextQuestionButton" disable="true" layoutX="411.0" layoutY="78.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="222.0" text="Następne pytanie">
-               <font>
-                  <Font size="20.0" />
-               </font>
+            <Button fx:id="nextQuestionButton" disable="true" mnemonicParsing="false" prefHeight="44.0" prefWidth="222.0" text="Następne pytanie" style="-fx-font-size: 20px; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-background-radius: 15; -fx-padding: 5 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 4, 0, 2, 2);">
             </Button>
-         </children>
-         <BorderPane.margin>
-            <Insets top="5.0" />
-         </BorderPane.margin>
-      </HBox>
-   </bottom>
+        </HBox>
+    </bottom>
 </BorderPane>
