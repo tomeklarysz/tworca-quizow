@@ -66,6 +66,7 @@ public class QuizController {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, quiz_id);
             ResultSet rs = stmt.executeQuery();
+            rs.next();
             loadQuestion(rs);
         } catch (SQLException e) {
             System.out.println("Błąd: " + e.getMessage());
@@ -83,11 +84,12 @@ public class QuizController {
         });
 
         nextQuestionButton.setDisable(true);
+        if (rs.next()) {
+            nextQuestionButton.setDisable(false);
+        }
         nextQuestionButton.setOnAction(event -> {
             try {
-                if (rs.next()) {
-                    loadQuestion(rs);
-                }
+                loadQuestion(rs);
             } catch (SQLException e) {
                 System.out.println("Błąd: " + e.getMessage());
             }
@@ -123,13 +125,6 @@ public class QuizController {
                 }
                 for (int i = 0; i < buttons.size(); i++) {
                     buttons.get(i).setGraphic(icons.get(i));
-                }
-                try {
-                    if (rs.next()) {
-                        nextQuestionButton.setDisable(false);
-                }
-                } catch (SQLException e) {
-                    System.out.println("Błąd: " + e.getMessage());
                 }
             });
         }
