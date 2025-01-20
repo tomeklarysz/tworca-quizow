@@ -119,6 +119,6 @@ public class LoginDataBase {
             System.out.println("Błąd podczas pobierania punktów: " + e.getMessage());
         }
 
-        return -1;  // Zwraca -1, jeśli użytkownik nie został znaleziony
+        return -1;
     }
 }
