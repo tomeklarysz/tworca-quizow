@@ -1,6 +1,8 @@
 package com.example.tworcaquizow;
 
+import Okno.ZmianaOkna;
 import Uzytkownik.Uzytkownik;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import Quiz.Quiz;
 import javafx.fxml.FXML;
@@ -13,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class MainController {
+public class MainController extends ZmianaOkna {
     @FXML
     public TextField LiczbaPunktowField;
     @FXML
@@ -84,79 +86,42 @@ public class MainController {
     }
 
     private void openQuiz(Quiz quiz) {
-        try {
-            // mozna pomyslec stworzeniu klasy/interfejsu kontroler,
-            // z ktorego inne kontrolery beda mogly dziedziczyc zeby np.
-            // wywolac funkcje do ladowania nowego okna, bo to sie powtarza
 
-            // Załaduj nowe okno
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StartQuizPanel.fxml"));
-            Parent root = fxmlLoader.load();
+        FXMLLoader fxmlLoader = załadujOkno("StartQuizPanel.fxml");
 
-            // Utwórz nową scenę i okno
-            Stage newStage = new Stage();
-            newStage.setTitle("Start Quiz");
-            newStage.setScene(new Scene(root));
-            newStage.show();
+        StartQuizController controller = fxmlLoader.getController();
+        controller.setQuiz(quiz);
+        controller.setLabel(quiz.getName());
+        controller.setDescription(quiz.getDescription());
+        controller.setUzytkownik(ZalogowanyUzytkownik);
+        controller.ustawLogin(ZalogowanyUzytkownik.getLogin());
 
-            StartQuizController controller = fxmlLoader.getController();
-            controller.setQuiz(quiz);
-            controller.setLabel(quiz.getName());
-            controller.setDescription(quiz.getDescription());
-            controller.setUzytkownik(ZalogowanyUzytkownik);
-            controller.ustawLogin(ZalogowanyUzytkownik.getLogin());
+        // Zamknij bieżące okno
+        Stage currentStage = (Stage) quizContainer.getScene().getWindow(); // Pobierz bieżący Stage
+        currentStage.close();
 
-            // Zamknij bieżące okno
-            Stage currentStage = (Stage) quizContainer.getScene().getWindow(); // Pobierz bieżący Stage
-            currentStage.close();
-
-        } catch (IOException e) {
-            System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-        }
     }
 
     public void WylogujButton(ActionEvent actionEvent) {
-        try {
-            // Załaduj nowe okno
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginPanel.fxml"));
-            Parent root = fxmlLoader.load();
 
-            // Utwórz nową scenę i okno
-            Stage newStage = new Stage();
-            newStage.setTitle("Main Panel");
-            newStage.setScene(new Scene(root, 800,600));
-            newStage.show();
+        załadujOkno("LoginPanel.fxml");
 
-            // Zamknij bieżące okno
-            Stage currentStage = (Stage) DodajQuizButton.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-        }
+        // Zamknij bieżące okno
+        Stage currentStage = (Stage) DodajQuizButton.getScene().getWindow();
+        currentStage.close();
     }
 
     public void DodajQuizButton(ActionEvent actionEvent) {
-        try {
-            // Załaduj nowe okno
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DodanieNazwyQuizuPanel.fxml"));
-            Parent root = fxmlLoader.load();
 
-            // Utwórz nową scenę i okno
-            Stage newStage = new Stage();
-            newStage.setTitle("Main Panel");
-            newStage.setScene(new Scene(root, 800,600));
-            newStage.show();
+        FXMLLoader fxmlLoader = załadujOkno("DodanieNazwyQuizuPanel.fxml");
 
-            DodanieNazwyQuizuController dodanieNazwyQuizuController = fxmlLoader.getController();
-            dodanieNazwyQuizuController.UstawLogin(ZalogowanyUzytkownik.getLogin());
-            dodanieNazwyQuizuController.DodajUzytkownika(ZalogowanyUzytkownik);
+        DodanieNazwyQuizuController dodanieNazwyQuizuController = fxmlLoader.getController();
+        dodanieNazwyQuizuController.UstawLogin(ZalogowanyUzytkownik.getLogin());
+        dodanieNazwyQuizuController.DodajUzytkownika(ZalogowanyUzytkownik);
 
-            // Zamknij bieżące okno
-            Stage currentStage = (Stage) DodajQuizButton.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-        }
+        // Zamknij bieżące okno
+        Stage currentStage = (Stage) DodajQuizButton.getScene().getWindow();
+        currentStage.close();
     }
 
     public void UstawLogin(String login) {

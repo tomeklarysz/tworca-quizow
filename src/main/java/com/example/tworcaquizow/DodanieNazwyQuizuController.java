@@ -1,5 +1,6 @@
 package com.example.tworcaquizow;
 
+import Okno.ZmianaOkna;
 import Uzytkownik.Uzytkownik;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class DodanieNazwyQuizuController {
+public class DodanieNazwyQuizuController extends ZmianaOkna {
     public Label LoginField;
     public Button WyjdzButtonField;
     public Uzytkownik ZalogowanyUzytkownik;
@@ -20,24 +21,16 @@ public class DodanieNazwyQuizuController {
     public TextField NazwaQuizuField;
 
     public void WyjdzButton(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainPanel.fxml"));
-            Parent root = fxmlLoader.load();
 
-            MainController mainController = fxmlLoader.getController();
-            mainController.UstawLogin(ZalogowanyUzytkownik.getLogin());
-            mainController.DodajUzytkownika(ZalogowanyUzytkownik);
-            mainController.WyswietlLiczbePunktow();
+        FXMLLoader fxmlLoader = załadujOkno("MainPanel.fxml");
 
-            Stage newStage = new Stage();
-            newStage.setTitle("Main Panel");
-            newStage.setScene(new Scene(root, 800,600));
-            newStage.show();
-            Stage currentStage = (Stage) WyjdzButtonField.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-        }
+        MainController mainController = fxmlLoader.getController();
+        mainController.UstawLogin(ZalogowanyUzytkownik.getLogin());
+        mainController.DodajUzytkownika(ZalogowanyUzytkownik);
+        mainController.WyswietlLiczbePunktow();
+
+        Stage currentStage = (Stage) WyjdzButtonField.getScene().getWindow();
+        currentStage.close();
     }
 
     public void UstawLogin(String login) {
@@ -66,28 +59,18 @@ public class DodanieNazwyQuizuController {
             if (quizId > 0) {
                 System.out.println("Dodano quiz o nazwie: " + nazwaQuizu + ", ID: " + quizId);
 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DodanieQuizPanel.fxml"));
-                Parent root = fxmlLoader.load();
+                FXMLLoader fxmlLoader = załadujOkno("DodanieQuizPanel.fxml");
 
                 DodanieQuizuController dodanieQuizuController = fxmlLoader.getController();
-
                 dodanieQuizuController.setCurrentQuizId(quizId);
-
                 dodanieQuizuController.UstawLogin(ZalogowanyUzytkownik.getLogin());
                 dodanieQuizuController.DodajUzytkownika(ZalogowanyUzytkownik);
-
-                Stage newStage = new Stage();
-                newStage.setTitle("Dodawanie Pytań");
-                newStage.setScene(new Scene(root, 800, 600));
-                newStage.show();
 
                 Stage currentStage = (Stage) WyjdzButtonField.getScene().getWindow();
                 currentStage.close();
             } else {
                 System.out.println("Wystąpił problem podczas dodawania quizu do bazy danych.");
             }
-        } catch (IOException e) {
-            System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Błąd bazy danych: " + e.getMessage());
         }

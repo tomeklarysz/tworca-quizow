@@ -1,5 +1,6 @@
 package com.example.tworcaquizow;
 
+import Okno.ZmianaOkna;
 import Uzytkownik.Uzytkownik;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EndQuizController {
+public class EndQuizController extends ZmianaOkna {
 
     @FXML public Label loginField;
     @FXML private Button quitButton;
@@ -28,28 +29,17 @@ public class EndQuizController {
     }
 
     public void quitQuiz() {
-        try {
-            // Załaduj nowe okno
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainPanel.fxml"));
-            Parent root = fxmlLoader.load();
 
-            // Utwórz nową scenę i okno
-            Stage newStage = new Stage();
-            newStage.setTitle("Main Panel");
-            newStage.setScene(new Scene(root));
-            newStage.show();
+        FXMLLoader fxmlLoader = załadujOkno("MainPanel.fxml");
 
-            MainController controller = fxmlLoader.getController();
-            controller.UstawLogin(uzytkownik.getLogin());
-            controller.DodajUzytkownika(uzytkownik);
-            controller.WyswietlLiczbePunktow();
+        MainController controller = fxmlLoader.getController();
+        controller.UstawLogin(uzytkownik.getLogin());
+        controller.DodajUzytkownika(uzytkownik);
+        controller.WyswietlLiczbePunktow();
 
-            Stage currentStage = (Stage) goodbyeText.getScene().getWindow(); // Pobierz bieżący Stage
-            currentStage.close();
+        Stage currentStage = (Stage) goodbyeText.getScene().getWindow(); // Pobierz bieżący Stage
+        currentStage.close();
 
-        } catch (IOException e) {
-            System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-        }
     }
 
     public void setUzytkownik(Uzytkownik uzytkownik) {

@@ -1,5 +1,6 @@
 package com.example.tworcaquizow;
 
+import Okno.ZmianaOkna;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class LoginController {
+public class LoginController extends ZmianaOkna {
     private Uzytkownik uzytkownik;
 
     @FXML
@@ -78,26 +79,17 @@ public class LoginController {
 
     public void ZalogowanieUzytkownika(Uzytkownik uzytkownik) {
         if (uzytkownik.getStanZalogowania()) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainPanel.fxml"));
-                Parent root = fxmlLoader.load();
 
-                MainController mainController = fxmlLoader.getController();
+            FXMLLoader fxmlLoader = załadujOkno("MainPanel.fxml");
 
-                mainController.UstawLogin(uzytkownik.getLogin());
-                mainController.DodajUzytkownika(uzytkownik);
-                mainController.WyswietlLiczbePunktow();
+            MainController mainController = fxmlLoader.getController();
 
-                Stage newStage = new Stage();
-                newStage.setTitle("Main Panel");
-                newStage.setScene(new Scene(root,800,600));
-                newStage.show();
+            mainController.UstawLogin(uzytkownik.getLogin());
+            mainController.DodajUzytkownika(uzytkownik);
+            mainController.WyswietlLiczbePunktow();
 
-                Stage currentStage = (Stage) loginField.getScene().getWindow();
-                currentStage.close();
-            } catch (IOException e) {
-                System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-            }
+            Stage currentStage = (Stage) loginField.getScene().getWindow();
+            currentStage.close();
         }
     }
 }

@@ -1,7 +1,9 @@
 package com.example.tworcaquizow;
 
+import Okno.ZmianaOkna;
 import Quiz.Quiz;
 import Uzytkownik.Uzytkownik;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +21,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class QuizController {
+public class QuizController extends ZmianaOkna {
 
     @FXML public Button buttonA;
     @FXML public Button buttonB;
@@ -133,30 +135,19 @@ public class QuizController {
     }
 
     public void finishQuiz() {
-        try {
-            // Załaduj nowe okno
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EndQuiz.fxml"));
-            Parent root = fxmlLoader.load();
 
-            // Utwórz nową scenę i okno
-            Stage newStage = new Stage();
-            newStage.setTitle("Quiz");
-            newStage.setScene(new Scene(root));
-            newStage.show();
+        FXMLLoader fxmlLoader = załadujOkno("EndQuiz.fxml");
 
-            EndQuizController controller = fxmlLoader.getController();
-            controller.setGoodbyeAndPoints(points);
-            controller.setUzytkownik(uzytkownik);
-            controller.ustawLogin(uzytkownik.getLogin());
-            uzytkownik.WyzerujLiczbePunktow();
-            loginDataBase.updatePoints(uzytkownik.getLogin(), uzytkownik.getHaslo(), points);
+        EndQuizController controller = fxmlLoader.getController();
+        controller.setGoodbyeAndPoints(points);
+        controller.setUzytkownik(uzytkownik);
+        controller.ustawLogin(uzytkownik.getLogin());
+        uzytkownik.WyzerujLiczbePunktow();
+        loginDataBase.updatePoints(uzytkownik.getLogin(), uzytkownik.getHaslo(), points);
 
-            Stage currentStage = (Stage) finishQuizButton.getScene().getWindow(); // Pobierz bieżący Stage
-            currentStage.close();
+        Stage currentStage = (Stage) finishQuizButton.getScene().getWindow(); // Pobierz bieżący Stage
+        currentStage.close();
 
-        } catch (IOException e) {
-            System.out.println("Błąd podczas ładowania pliku FXML: " + e.getMessage());
-        }
     }
 
     public void setUzytkownik(Uzytkownik uzytkownik) {
