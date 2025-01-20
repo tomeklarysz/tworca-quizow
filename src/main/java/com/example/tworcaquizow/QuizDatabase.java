@@ -88,35 +88,23 @@ public class QuizDatabase {
         }
     }
 
-    public void getQuestionsAndAnswersForQuiz(int quizId) throws SQLException {
-        String sql = """
-            SELECT q.question_text, a.answer_text
-            FROM questions q
-            LEFT JOIN answers a ON q.id = a.question_id
-            WHERE q.quiz_id = ?
-            ORDER BY q.id, a.id
-        """;
-
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, quizId);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    String questionText = rs.getString("question_text");
-                    String answerText = rs.getString("answer_text");
-                    System.out.println("Question: " + questionText + " | Answer: " + answerText);
-                }
-            }
+    public String[] loadAnswers(int question_id, int quiz_id) throws SQLException {
+        String query = "SELECT * FROM answers WHERE question_id = ? AND quiz_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, question_id);
+        preparedStatement.setInt(2, quiz_id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        String[] answers = new String[4];
+        int counter = 0;
+        while (resultSet.next()) {
+            answers[counter] = resultSet.getString("text");
+            counter++;
         }
+        return answers;
+
     }
 
-    public void listAllQuizzes() throws SQLException {
-        String sql = "SELECT * FROM quiz";
-        try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                System.out.println("Quiz ID: " + id + ", Name: " + name);
-            }
-        }
+    public Connection getConnection() {
+        return connection;
     }
 }

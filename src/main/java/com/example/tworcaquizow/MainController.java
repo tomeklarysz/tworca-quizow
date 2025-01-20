@@ -26,6 +26,7 @@ public class MainController {
     private VBox quizContainer;
     private Uzytkownik ZalogowanyUzytkownik;
     private LoginDataBase loginDataBase;
+    private QuizDatabase quizDatabase;
 
     public void initialize() {
         populateQuiz();
@@ -58,7 +59,8 @@ public class MainController {
         quizContainer.getChildren().clear();
 
         try {
-            Connection conn = QuizyDatabase.connectToDatabase();
+            quizDatabase = new QuizDatabase();
+            Connection conn = quizDatabase.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM quizy");
 

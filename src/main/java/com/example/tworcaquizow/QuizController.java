@@ -35,6 +35,7 @@ public class QuizController {
     private Uzytkownik uzytkownik;
     private int points;
     private LoginDataBase loginDataBase;
+    private QuizDatabase quizDatabase;
 
     public void initialize() {
         redXIcon = new Image(getClass().getResource("/icons/red-x.png").toExternalForm());
@@ -61,7 +62,8 @@ public class QuizController {
         points = 0;
         try {
             int quiz_id = quiz.getId();
-            Connection conn = QuizyDatabase.connectToDatabase();
+            quizDatabase = new QuizDatabase();
+            Connection conn = quizDatabase.getConnection();
             String query = "SELECT * FROM questions WHERE quiz_id = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, quiz_id);
@@ -95,7 +97,7 @@ public class QuizController {
             }
         });
 
-        String[] answers = QuizyDatabase.loadAnswers(question_id, quiz.getId());
+        String[] answers = quizDatabase.loadAnswers(question_id, quiz.getId());
         String correctAnswer = answers[0];
         List<String> answersList = Arrays.asList(answers);
         Collections.shuffle(answersList);
