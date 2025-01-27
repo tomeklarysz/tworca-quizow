@@ -3,7 +3,7 @@ package com.example.tworcaquizow;
 import java.sql.*;
 
 public class LoginDataBase {
-    private static final String DB_URL = "jdbc:sqlite:C:\\Users\\araba\\IdeaProjects\\tworca-quizow\\src\\main\\databases\\db_login.db";
+    private static final String DB_URL = "jdbc:sqlite:src/main/databases/db_login.db";
     private Connection connection;
 
     public LoginDataBase() throws SQLException {
@@ -26,7 +26,6 @@ public class LoginDataBase {
             """;
         try (PreparedStatement stmt = connection.prepareStatement(createTableSQL)) {
             stmt.execute();
-            System.out.println("Tabela została utworzona (lub już istnieje).");
         } catch (SQLException e) {
             System.out.println("Błąd podczas tworzenia tabeli: " + e.getMessage());
         }

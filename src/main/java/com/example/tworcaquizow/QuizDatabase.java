@@ -3,7 +3,7 @@ package com.example.tworcaquizow;
 import java.sql.*;
 
 public class QuizDatabase {
-    private static final String DB_URL = "jdbc:sqlite:C:\\Users\\araba\\IdeaProjects\\tworca-quizow\\src\\main\\databases\\quiz.db";
+    private static final String DB_URL = "jdbc:sqlite:src/main/databases/quiz.db";
     private Connection connection;
 
     public QuizDatabase() throws SQLException {
